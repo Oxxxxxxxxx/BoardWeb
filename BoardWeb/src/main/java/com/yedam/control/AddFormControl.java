@@ -17,9 +17,10 @@ public class AddFormControl implements Control {
 		request.setAttribute("msg", "amu");
 		request.getRequestDispatcher("WEB-INF/html/addForm.jsp")
 				.forward(request, response);
-//		
-//		PrintWriter out = response.getWriter();
-//		out.print("<h3>"+"hello"+"</h3>");
+		
+		//커밋테스트하려고 수정했습니다
+		
+		
 	}
 
 }
