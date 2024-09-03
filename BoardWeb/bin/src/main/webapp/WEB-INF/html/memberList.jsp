@@ -6,9 +6,8 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="../includes/header.jsp"></jsp:include>
 <%
-// jsp -> 서블릿으로 변환되어져서 실행.
-// memberList.jsp -> memberList_jsp.java -> memberList_jsp.class 실행
-List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
+MemberService svc = new MemberServiceImpl();
+List<MemberVO> list = svc.getMembers();
 %>
 <h3>회원 목록</h3>
 <table class="table">

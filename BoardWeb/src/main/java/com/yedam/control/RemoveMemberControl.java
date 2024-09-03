@@ -1,7 +1,6 @@
 package com.yedam.control;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,18 +11,25 @@ import com.yedam.service.MemberService;
 import com.yedam.service.MemberServiceImpl;
 import com.yedam.vo.MemberVO;
 
-public class MemberListControl implements Control {
+public class RemoveMemberControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//id 파라메타를 받아서 db 삭제처리. 목록이동.
+		String id = request.getParameter("id");
+		
 		MemberService svc = new MemberServiceImpl();
-		List<MemberVO> list = svc.getMembers();
 		
-		request.setAttribute("memberList", list);
 		
-		request.getRequestDispatcher("WEB-INF/html/memberList.jsp").forward(request, response);
-
+		if (svc.removeMember(id)) {
+			response.sendRedirect("memberList.do");
+		}
+		else {
+			request.setAttribute("message", "등록중에 오류가 있습니다.");
+			request.getRequestDispatcher("WEB-INF/html/modifyForm.jsp")
+			.forward(request, response);
+		}
 	}
 
 }
