@@ -1,33 +1,22 @@
 package com.yedam.common;
 
-import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-
-import com.yedam.mapper.MemberMapper;
-import com.yedam.vo.MemberVO;
+import com.yedam.service.BoardService;
+import com.yedam.service.BoradServiceImpl;
+import com.yedam.vo.BoardVO;
 
 public class AppTest {
 	public static void main(String[] args) {
-		MemberVO mvo = new MemberVO();
-		mvo.setMemberId("user04");
-		mvo.setMemberName("김김치");
-		mvo.setPassword("1111");
-		mvo.setEmail("kim@email.com");
-
-		SqlSessionFactory factory = DataSource.getInstance();
-		SqlSession session = factory.openSession();
-		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		BoardVO board = new BoardVO();
+		board.setTitle("수정....입력테스트2");
+		board.setContent("수정....내용입니다2");
+		board.setWriter("kim");
+		board.setBoardNo(257);
 		
-		if(mapper.insertMember(mvo) == 1) {
-			session.commit();
-		}
 		
-		List<MemberVO> list = mapper.memberList();
-		list.forEach(member -> {
-			System.out.println(member.toString());
-		});
-	
+		
+		//목록
+		BoardService svc = new BoradServiceImpl();
+		svc.removeboard(3);
+		
 	}
 }

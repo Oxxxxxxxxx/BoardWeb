@@ -11,6 +11,8 @@ import com.yedam.control.AddFormControl;
 import com.yedam.control.AddMemberControl;
 import com.yedam.control.GetmemberControl;
 import com.yedam.control.IntroControl;
+import com.yedam.control.LoginControl;
+import com.yedam.control.LoginFormControl;
 import com.yedam.control.MainControl;
 import com.yedam.control.MemberListControl;
 import com.yedam.control.ModFormControl;
@@ -37,6 +39,10 @@ public class MenuMember {
 		menu.put("/modifyForm.do", new ModFormControl()); //수정화면 호출
 		menu.put("/modifyMember.do", new ModifyMemberControl()); //수정화면
 		menu.put("/removeMember.do", new RemoveMemberControl());
+		
+		//로그인 관련
+		menu.put("/loginForm.do", new LoginFormControl());
+		menu.put("/login.do", new LoginControl());
 		return menu;
 	}
 	
