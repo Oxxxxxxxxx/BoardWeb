@@ -20,13 +20,23 @@ public class BoardControl implements Control {
 		String bno = request.getParameter("bno");
 		String page = request.getParameter("page");
 		
+		//검색조건 searchCondition & keyword
+		String sc = request.getParameter("searchCondition");
+		String kw = request.getParameter("keyword");
+		
+	
 		BoardService svc = new BoradServiceImpl();
 		BoardVO board = svc.getboard(Integer.parseInt(bno));
 		request.setAttribute("board", board);
-		request.setAttribute("page", page);
+		request.setAttribute("page", page); // jsp페이지에 전달.
 		
+		request.setAttribute("sc", sc);
+		request.setAttribute("kw", kw);
+		
+		//캉ㄴ트 증가.
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/board/board.jsp");
 		rd.forward(request, response);
+		
 		
 	}
 

@@ -41,4 +41,10 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.selectmember(memberId);
 	}
 
+	@Override
+	public MemberVO loginCheck(String id, String pw) {
+		// TODO Auto-generated method stub
+		return mapper.loginMember(id, pw);
+	}
+
 }

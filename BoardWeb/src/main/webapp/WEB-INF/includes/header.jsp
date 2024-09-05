@@ -20,7 +20,7 @@
 		<!-- Sidebar-->
 		<div class="border-end bg-white" id="sidebar-wrapper">
 			<div class="sidebar-heading border-bottom bg-light">Start
-				Bootstrap</div>
+				Bootstrap (${empty logid ? '손님' : logName})</div>
 			<div class="list-group list-group-flush">
 				<a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
@@ -33,17 +33,17 @@
 					<c:when test="${empty logid }"> <!-- 로그아웃 상태 -->
 						<a
 							class="list-group-item list-group-item-action list-group-item-light p-3"
-							href="loginForm.do">로그인 화면</a>
+							href="loginForm.do">로그인</a>
 					</c:when>
 					<c:otherwise> <!-- 로그인 상태 -->
 						<a
 							class="list-group-item list-group-item-action list-group-item-light p-3"
-							href="loginForm.do">로그아웃</a>
+							href="logout.do">로그아웃-(${logid })</a>
+						<a
+							class="list-group-item list-group-item-action list-group-item-light p-3" href="addBoardForm.do">글 등록</a> 
 					</c:otherwise>
 				</c:choose>
-				<a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Profile</a> <a
+					<a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
 					href="#!">Status</a>
 			</div>

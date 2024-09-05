@@ -16,11 +16,23 @@
 		order by board_no desc
 	</select>
 
-	<select id="selectListPaging" resultType="board" parameterType="int">
+	<select id="selectListPaging" resultType="board" parameterType="com.yedam.common.SearchDTO">
 		select c.*
 		from (select rownum rn, b.*
 				from (SELECT *
 					  From tbl_board
+					  where
+					  <choose>
+					  	<when test="searchCondition == 'T'.toString()">
+					  		title like '%'||#{keyword}||'%'
+					  	</when>
+					  	<when test="searchCondition == 'W'.toString()">
+					  		writer like '%'||#{keyword}||'%'
+					  	</when>
+					  	<otherwise>
+					  		title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%'
+					  	</otherwise>
+					  </choose>
 					  order by board_no desc) b
 				<![CDATA[
 				where rownum <= #{page} *5) c
@@ -30,21 +42,20 @@
 
 	<insert id="insertBoard" parameterType="board">
 		insert into tbl_board
-		(board_no, title, content, writer)
+		(board_no, title, content, writer, image)
 		values (board_seq.nextval, #{title},
-		#{content}, #{writer})
+		#{content}, #{writer}, #{image})
 	</insert>
 
 	<update id="updateBoard" parameterType="board">
 		update tbl_board
-		<set>
+		set
 			<if test="title != null">
 				title = #{title},
 			</if>
 			<if test="content != null">
 				content = #{content}
 			</if>
-		</set>
 		where board_no = #{boardNo}
 	</update>
 
@@ -61,14 +72,26 @@
 		content,
 		writer,
 		view_cnt,
-		creation_date
+		creation_date,
+		image
 		from tbl_board
 		where board_no = #{boardNo}
 	</select>
 	
-	<select id="selectCount" resultType="int">
+	<select id="selectCount" resultType="int" parameterType="com.yedam.common.SearchDTO">
 		select count(1)
 		from   tbl_board
+		where  <choose>
+				<when test="searchCondition == 'T'.toString()">
+					  	title like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchCondition == 'W'.toString()">
+					  	writer like '%'||#{keyword}||'%'
+				</when>
+				<otherwise>
+					  	title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%'
+				</otherwise>
+			   </choose>
 	</select>
 
 </mapper>
