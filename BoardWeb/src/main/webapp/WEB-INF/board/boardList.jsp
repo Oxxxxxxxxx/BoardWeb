@@ -5,7 +5,6 @@
 <%@page import="com.yedam.vo.BoardVO"%>
 <%@page import="java.util.List"%>
 
-<jsp:include page="../includes/header.jsp"></jsp:include>
 
 <h3>게시글 목록</h3>
 <div class="center">
@@ -107,4 +106,3 @@ String name = "hong";
 	<p>털렸습니다</p>
 </c:if>
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>

@@ -49,13 +49,14 @@
 
 	<update id="updateBoard" parameterType="board">
 		update tbl_board
-		set
+		<set>
 			<if test="title != null">
 				title = #{title},
 			</if>
 			<if test="content != null">
 				content = #{content}
 			</if>
+		</set>
 		where board_no = #{boardNo}
 	</update>
 

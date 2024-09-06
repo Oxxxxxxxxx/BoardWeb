@@ -35,7 +35,7 @@ public class BoardModControl implements Control {
 			response.sendRedirect("boardList.do");
 		} else {
 			request.setAttribute("message", "수정중에 오류가 있습니다.");
-			request.getRequestDispatcher("WEB-INF/html/modifyForm.jsp").forward(request, response);
+			request.getRequestDispatcher("board/modifyForm.tiles").forward(request, response);
 		}
 	}
 

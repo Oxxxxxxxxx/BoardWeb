@@ -15,7 +15,7 @@ public class LoginFormControl implements Control {
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		RequestDispatcher re = request.getRequestDispatcher("WEB-INF/html/logForm.jsp");
+		RequestDispatcher re = request.getRequestDispatcher("main/logForm.tiles");
 		re.forward(request, response);
 	}
 

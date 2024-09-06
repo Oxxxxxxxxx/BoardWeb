@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="mt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:include page="../includes/header.jsp"></jsp:include>
 <h3>게시글 상세정보</h3>
 <%
 BoardVO bd = (BoardVO) request.getAttribute("board");
@@ -58,4 +57,3 @@ BoardVO bd = (BoardVO) request.getAttribute("board");
 	}
 </script>
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>

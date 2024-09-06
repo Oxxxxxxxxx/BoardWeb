@@ -13,6 +13,7 @@ public class MainControl implements Control{
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
+		request.getRequestDispatcher("main/main.tiles");
 		System.out.println("메인컨트롤 실행.");
 	}
 	
