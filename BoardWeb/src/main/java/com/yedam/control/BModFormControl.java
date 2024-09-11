@@ -21,9 +21,10 @@ public class BModFormControl implements Control {
 		
 		//조회한 정보를 JSP전달.
 		BoardService svc = new BoradServiceImpl();
+		String bno = request.getParameter("bno");
 		BoardVO mv = svc.getboard(Integer.parseInt(bno));
 
-		request.setAttribute("modifyboard", );
+		request.setAttribute("modifyboard", mv);
 		
 		request.getRequestDispatcher("board/modifyboard.tiles").forward(request, response);
 

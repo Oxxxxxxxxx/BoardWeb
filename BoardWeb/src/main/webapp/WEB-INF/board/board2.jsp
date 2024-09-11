@@ -16,18 +16,13 @@ div.reply span {
 	display: inline-block;
 }
 </style>
-
-<link rel="stylesheet"
-	href="//cdn.datatables.net/2.1.5/css/dataTables.dataTables.min.css">
-<script src="js/jquery-3.7.1.js"></script>
-<script src="//cdn.datatables.net/2.1.5/js/dataTables.min.js"></script>
-
 <script>
 	const bno = '${board.boardNo}'; //원본글번호.
 	const writer = '${logid}'; //로그인정보.
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/replyService.js"></script>
+<script src="js/replyBoard.js"></script>
 
 <h3>게시글 상세정보</h3>
 <%
@@ -83,25 +78,30 @@ BoardVO bd = (BoardVO) request.getAttribute("board");
 		<button id="addReply" class="btn btn-primary">댓글동록</button>
 	</div>
 	<!-- 댓글목록 -->
-	<table id="example" class="display" style="width: 100%">
-		<thead>
-			<tr>
-				<th>댓글번호</th>
-				<th>내용</th>
-				<th>작성자</th>
-				<th>작성일시</th>
-			</tr>
-		</thead>
-		<tfoot>
-			<tr>
-				<th>댓글번호</th>
-				<th>내용</th>
-				<th>작성자</th>
-				<th>작성일시</th>
-			</tr>
-		</tfoot>
-	</table>
+	<div class="content">
+		<ul>
+			<li><span class="col-sm-2">글번호</span> <span class="col-sm-2">댓글내용</span>
+				<span class="col-sm-2">작성자</span> <span class="col-sm-2">삭제</span></li>
+			<li>
+				<hr />
+			</li>
+			<li id="template" style="display: none;"><span class="col-sm-2">24</span>
+				<span class="col-sm-2">테스입니다</span> <span class="col-sm-2">user01</span>
+				<span class="col-sm-2"><button class="btn btn-danger">삭제</button></span>
+			</li>
+		</ul>
+	</div>
+
 	<!-- 댓글페이징 -->
+	<nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+			<li class="page-item disabled"><a class="page-link">Previous</a></li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+		</ul>
+	</nav>
 </div>
 
 <script>

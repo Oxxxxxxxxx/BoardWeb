@@ -17,7 +17,8 @@ public class BoradServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> boardList(SearchDTO search) {
 		// TODO Auto-generated method stub
-		return mapper.selectListPaging(search);
+	//	return mapper.selectListPaging(search);
+		return mapper.selectList();
 	}
 
 	@Override
